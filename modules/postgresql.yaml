@@ -1,9 +1,10 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: postgres
+  name: zio
 #  namespace: zio-hexa
 spec:
+  serviceName: postgres
   selector:
     matchLabels:
       app: postgres
@@ -26,6 +27,9 @@ spec:
           ports:
             - name: tcp
               containerPort: 5432
+          volumeMounts:
+           - name: postgresql-db-disk
+             mountPath: /data
           env:
             - name: POSTGRES_DB
               value: currencies
@@ -33,3 +37,14 @@ spec:
               value: admin
             - name: POSTGRES_PASSWORD
               value: password
+            - name: PGDATA
+              value: /data/pgdata
+           # Volume Claim
+          volumeClaimTemplates:
+            - metadata:
+              name: postgresql-db-disk
+          spec:
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 25Gi
