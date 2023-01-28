@@ -21,7 +21,7 @@ spec:
         env:
         - name: POSTGRES_DB
           value: ledger-cal
-        - name: POSTGRES_USERNAME
+        - name: POSTGRES_USER
           value: test
         - name: POSTGRES_PASSWORD
           valueFrom:
