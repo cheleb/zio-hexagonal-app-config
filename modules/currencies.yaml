@@ -28,8 +28,11 @@ spec:
           env:
             - name: DB_HOST
               value: postgres
-            - name: DB_USER
+            - name: POSTGRES_USERNAME
               value: test
-            - name: DB_PASSWORD
-              value: test
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-secrets
+                  key: POSTGRES_PASSWORD
 

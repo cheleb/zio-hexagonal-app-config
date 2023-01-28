@@ -1,49 +1,41 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: postgresql-db
+  name: postgresql-sfs
 spec:
-  serviceName: postgres
   selector:
     matchLabels:
-      app: postgres
+      app: postgresql-a # has to match .spec.template.metadata.labels
+  serviceName: "postgresql-svc"
+  replicas: 1 # by default is 1
   template:
     metadata:
       labels:
-        app: postgres
+        app: postgresql-a # has to match .spec.selector.matchLabels
     spec:
+      terminationGracePeriodSeconds: 10
       containers:
-        - name: postgres
-          image: postgres:15.1
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "250m"
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
-          imagePullPolicy: Always
-          ports:
-            - name: tcp
-              containerPort: 5432
-          volumeMounts:
-           - name: postgresql-db-disk
-             mountPath: /data
-          env:
-            - name: POSTGRES_DB
-              value: currencies
-            - name: POSTGRES_USER
-              value: admin
-            - name: POSTGRES_PASSWORD
-              value: password
-            - name: PGDATA
-              value: /data/pgdata
-           # Volume Claim
-          volumeClaimTemplates:
-            - metadata:
-              name: postgresql-db-disk
-          spec:
-            accessModes: ["ReadWriteOnce"]
-            resources:
-              requests:
-                storage: 25Gi
+      - name: postgresql-db
+        image: postgres:15.1
+        env:
+        - name: POSTGRES_USERNAME
+          value: test
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgresql-secrets
+              key: POSTGRES_PASSWORD
+        ports:
+        - containerPort: 5432
+          name: postgresql-port
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
