@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: currencies
-          image: cheleb/currency-service:0.1.0-SNAPSHOT
+          image: cheleb/currency-service:0.1.1-SNAPSHOT
           resources:
             requests:
               memory: "64Mi"
@@ -27,10 +27,10 @@ spec:
               containerPort: 5432
           env:
             - name: DB_HOST
-              value: postgres-svc
-            - name: DB_USER
+              value: postgresql-svc
+            - name: POSTGRES_USERNAME
               value: test
-            - name: DB_PASSWORD
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: postgresql-secrets
