@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: currencies
-          image: cheleb/currency-service:0.1.1-SNAPSHOT
+          image: cheleb/currency-service:0.1.2-SNAPSHOT
           resources:
             requests:
               memory: "128Mi"
