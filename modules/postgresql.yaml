@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: postgresql-sfs
-  namespace: zio-hexa
+  namespace: ziohexa
 spec:
   selector:
     matchLabels:

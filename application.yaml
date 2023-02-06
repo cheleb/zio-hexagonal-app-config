@@ -12,7 +12,7 @@ spec:
     path: modules
   destination: 
     server: https://kubernetes.default.svc
-    namespace: zio-hexa
+    namespace: ziohexa
 
   syncPolicy:
     syncOptions:
