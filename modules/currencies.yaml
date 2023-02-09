@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: currencies
-          image: localhost:5000/cheleb/currency-service:0.1.2-SNAPSHOT
+          image: localhost:5000/cheleb/currency-service:0.1.4-SNAPSHOT
           resources:
             requests:
               memory: "128Mi"
@@ -35,4 +35,3 @@ spec:
                 secretKeyRef:
                   name: postgresql-secrets
                   key: POSTGRES_PASSWORD
-
