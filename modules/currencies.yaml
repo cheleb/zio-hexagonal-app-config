@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: currencies
-          image: localhost:5000/cheleb/currency-service:0.1.4-SNAPSHOT
+          image: localhost:5000/cheleb/currency-service:0.1.5-SNAPSHOT
           resources:
             requests:
               memory: "128Mi"
