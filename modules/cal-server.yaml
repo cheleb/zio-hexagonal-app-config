@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: cal-server
-          image: localhost:5000/cheleb/cal-server:0.1.5-SNAPSHOT
+          image: localhost:5000/cheleb/cal-server:0.1.6-SNAPSHOT
           resources:
             requests:
               memory: "128Mi"
