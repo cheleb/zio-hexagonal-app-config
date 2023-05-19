@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: cal-server
-          image: localhost:5000/cheleb/cal-server:0.1.17
+          image: localhost:5000/cheleb/cal-server:0.1.18
           resources:
             requests:
               memory: "128Mi"
@@ -21,4 +21,4 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
