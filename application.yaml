@@ -2,6 +2,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: zio-hexagonal-apps
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: cal=localhost:5000/cheleb/cal-server,currency=localhost:5000/cheleb/currency-service
+    argocd-image-updater.argoproj.io/cal.update-strategy: latest
+    argocd-image-updater.argoproj.io/currency.update-strategy: latest
+
   namespace: argocd
 spec:
   project: default
@@ -10,13 +15,13 @@ spec:
     repoURL: https://github.com/cheleb/zio-hexagonal-app-config.git
     targetRevision: HEAD
     path: modules
-  destination: 
+  destination:
     server: https://kubernetes.default.svc
     namespace: ziohexa
 
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
 
     automated:
       selfHeal: true
