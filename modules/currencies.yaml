@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: currencies
-          image: localhost:5000/cheleb/currency-service:0.1.24
+          image: localhost:5000/cheleb/currency-service:0.1.25
           resources:
             requests:
               memory: "128Mi"
@@ -21,7 +21,7 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - name: tcp
               containerPort: 5432

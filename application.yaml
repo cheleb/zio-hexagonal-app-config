@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: zio-hexagonal-apps
   annotations:
-    argocd-image-updater.argoproj.io/image-list: cal=local/cheleb/cal-server,currency=local/cheleb/currency-service
+    argocd-image-updater.argoproj.io/image-list: cal=orthanc/cheleb/cal-server,currency=orthanc/cheleb/currency-service
     argocd-image-updater.argoproj.io/cal.update-strategy: latest
     argocd-image-updater.argoproj.io/currency.update-strategy: latest
 
