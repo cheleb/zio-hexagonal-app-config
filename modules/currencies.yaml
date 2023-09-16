@@ -21,7 +21,7 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - name: currencies-port
               containerPort: 8000
