@@ -23,7 +23,7 @@ spec:
               cpu: "500m"
           imagePullPolicy: Always
           ports:
-            - name: tcp
+            - name: currencies-port
               containerPort: 8000
           env:
             - name: PRAVEGA_CONTROLLER_URI
