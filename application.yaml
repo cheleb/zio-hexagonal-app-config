@@ -11,10 +11,10 @@ metadata:
 spec:
   project: default
 
-  sources:
-    - repoURL: https://github.com/cheleb/zio-hexagonal-app-config.git
-      targetRevision: HEAD
-      path: modules
+  source:
+    repoURL: https://github.com/cheleb/zio-hexagonal-app-config.git
+    targetRevision: HEAD
+    path: modules
   destination:
     server: https://kubernetes.default.svc
     namespace: ziohexa
