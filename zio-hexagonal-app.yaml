@@ -6,8 +6,8 @@ metadata:
     argocd-image-updater.argoproj.io/image-list: cal=cheleb/cal-server,currency=cheleb/currency-service
     argocd-image-updater.argoproj.io/cal.update-strategy: latest
     argocd-image-updater.argoproj.io/currency.update-strategy: latest
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  # finalizers:
+  #   - resources-finalizer.argocd.argoproj.io
   namespace: argocd
 spec:
   project: default
@@ -19,11 +19,9 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: ziohexa
-
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-
-    automated:
-      selfHeal: true
-      prune: true
+#  syncPolicy:
+#    syncOptions:
+#      - CreateNamespace=true
+#    automated:
+#      selfHeal: true
+#      prune: true

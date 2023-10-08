@@ -9,10 +9,12 @@ kind: AppProject
 metadata:
   name: zio-hexagonal-app
   namespace: argocd
-finalizers:
-  - resources-finalizer.argocd.argoproj.io
+# finalizers:
+#   - resources-finalizer.argocd.argoproj.io
 spec:
   description: ZIO Hexagonal App
+  sourceRepos:
+    -
   destinations:
     - namespace: ziohexa
       server: https://kubernetes.default.svc
